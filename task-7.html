@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Countdown Clock</title>
+		<style type="text/css">
+		body {
+			background-color: teal;
+		}
+
+		.countdownContainer{
+			position: absolute;;
+			top: 50%;
+			left: 50%;
+			transform : translateX(-50%) translateY(-50%);
+			text-align: center;
+			background: rgba(141, 5, 5, 0.349);
+			border: 1px solid rgb(222, 255, 212);
+			padding: 10px;
+			box-shadow: 0 0 5px 5px #ccc;
+			border-radius: 30px 30px;
+		}
+
+		.info {
+			font-size: 80px;
+			font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+		}
+		#clock{
+			/* background: rgb(255, 255, 255); */
+		         color:antiquewhite;
+		}
+		#days{
+			background-color: rgb(250, 213, 213);
+			padding-top: 6px ;
+			padding-bottom: 6px;
+			border-radius: 20px;
+		}
+		#hours{
+			background-color: rgb(250, 213, 213);
+			padding-top: 8px ;
+			padding-bottom: 8px;
+			border-radius: 20px;
+		}
+		#minutes{
+			background-color: rgb(250, 213, 213);
+			padding-top: 8px ;
+			padding-bottom: 8px;
+			border-radius: 20px;
+		}
+		#seconds{
+			background-color: rgb(250, 213, 213);
+			padding-top: 8px ;
+			padding-bottom: 8px;
+			border-radius: 20px;
+			color: red;
+		}
+		.colour{
+			color: rgb(255, 255, 255);
+			font-size: 18px;
+			font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+		}
+		</style>
+	</head>
+	<body>
+		<table class="countdownContainer">
+			<tr class="info">
+				<td colspan="4" id="clock">Countdown Clock</td>
+			</tr>
+			<tr class="info">
+				<td id="days">120</td>
+				<td id="hours">4</td>
+				<td id="minutes">12</td>
+				<td id="seconds">22</td>
+			</tr>
+			<tr class="colour">
+				<td>Days</td>
+				<td>Hours</td>
+				<td>Minutes</td>
+				<td>Seconds</td>
+			</tr>
+		</table>
+		<script type="text/javascript">
+
+			function countdown(){
+				var now = new Date();
+				var eventDate = new Date(now.getFullYear(), 11, 25);
+
+				var currentTiime = now.getTime();
+				var eventTime = eventDate.getTime();
+
+				var remTime = eventTime - currentTiime;
+
+				var s = Math.floor(remTime / 1000);
+				var m = Math.floor(s / 60);
+				var h = Math.floor(m / 60);
+				var d = Math.floor(h / 24);
+
+				h %= 24;
+				m %= 60;
+				s %= 60;
+
+				h = (h < 10) ? "0" + h : h;
+				m = (m < 10) ? "0" + m : m;
+				s = (s < 10) ? "0" + s : s;
+
+				document.getElementById("days").textContent = d;
+				document.getElementById("days").innerText = d;
+
+				document.getElementById("hours").textContent = h;
+				document.getElementById("minutes").textContent = m;
+				document.getElementById("seconds").textContent = s;
+
+				setTimeout(countdown, 1000);
+			}
+
+			countdown();
+		</script>
+	</body>
+</html>
